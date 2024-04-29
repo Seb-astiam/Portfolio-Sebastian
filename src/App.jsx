@@ -1,5 +1,5 @@
 import { Nav } from "./Components/Nav";
-import { SobreMi } from "./Components/SobreMi";
+import { SobreMi } from "./Components/SobreMi/SobreMi";
 
 function App() {
 
