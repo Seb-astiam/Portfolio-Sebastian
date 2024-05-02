@@ -10,10 +10,12 @@ const portfolioSlice = createSlice({
   name: "storage",
   initialState,
   reducers: {
-    
+    changeDivSkills (state, action) {
+      state.skills = action
+    }
   },
 });
 
-export const { } = portfolioSlice.actions;
+export const { changeDivSkills } = portfolioSlice.actions;
 
 export default portfolioSlice.reducer;

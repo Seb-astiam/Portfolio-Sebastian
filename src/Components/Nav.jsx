@@ -1,14 +1,23 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import FotoGrandePrincipal from '../assets/FotoGrandePrincipal.png'
 import { ArrowUpRightIcon } from '@heroicons/react/24/solid'
 import FondoHoverMarca from '../assets/FondoHoverMarca.png'
 import FondoNoHoverMarca from '../assets/FondoNoHoverMarca.png'
 
+// const PNav = styled.p`
+//     &:hover {
+//         color: ${({ hoverColor }) => hoverColor};
+//     }
+// `;
+
+
 const PNav = styled.p`
+    transition: all 0.3s ease-in-out;
     &:hover {
-        color: ${({ hoverColor }) => hoverColor};
+        color: ${props => props.hoverColor}; /* Cambia al color deseado */
+        transform: scale(1.1); /* Aumenta el tamaño al 110% */
+        /* Agrega cualquier otra animación deseada */
     }
 `;
 

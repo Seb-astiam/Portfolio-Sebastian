@@ -8,8 +8,11 @@ import { DiReact } from "react-icons/di";
 import { DiHtml5 } from "react-icons/di";
 import { DiGit } from "react-icons/di";
 import { DiVisualstudio } from "react-icons/di";
+import { useSelector } from "react-redux";
 
 export const SobreMi = () => {
+
+    const tecnologías = useSelector((state) => state.storage.skills)
 
     const iconosDev = [
         DiJsBadge,
@@ -44,7 +47,8 @@ export const SobreMi = () => {
                 <div className="flex justify-center items-start w-full h-[80%] rounded-b-[45px] font-montserrat font-normal">
                     
                     <div className="w-[50%] h-full content-center justify-center flex-wrap text-start p-[100px] flex flex-col gap-[50px] text-xl ">
-                        <div className="border-8 border-black p-24 flex flex-col gap-3 rounded-[50px] bg-white border-double ">
+                        <div className="border-8 border-black p-20 flex flex-col gap-3 rounded-[50px] bg-white border-double ">
+                            <h1 className="text-4xl font-bold">Sobre Mi</h1>
                             <p className="w-[90%]"> 
                                 Hola, me llamo <strong>Joan Sebastian Agudelo</strong> Soy programador Full-Stack con formación en Química y Farmacia, 
                                 tengo experiencia practica en diversos proyectos utilizando Javascript, Socket.io, postgreSQL entre otras tecnologías, 
@@ -59,7 +63,7 @@ export const SobreMi = () => {
                         </div>
                     </div>
 
-                    <div className="w-[50%] h-full content-center justify-center flex-wrap text-xl">
+                    {tecnologías && <div className="w-[50%] h-full content-center justify-center flex-wrap text-xl">
                         <div className="flex flex-col h-full w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
                             <h1 className="font-bold text-white"> Desarrollador web Full Stack</h1>
 
@@ -70,7 +74,7 @@ export const SobreMi = () => {
                                         const nombre = iconoInfo ? iconoInfo.name : '';
                                         return <div className="flex flex-col" key={index}>
                                             <p className="text-white z-10">{nombre}</p>
-                                            <Icono className="h-[80px] w-[80px] hover:scale-125 transition-all text-white"/>
+                                            <Icono className="h-[75px] w-[75px] hover:scale-125 transition-all text-white"/>
                                         </div> 
                                     })
                                 }
@@ -78,7 +82,7 @@ export const SobreMi = () => {
                             </div>
 
                         </div>
-                    </div>
+                    </div>}
                 </div>
 
                 <div className="h-[20%]">
