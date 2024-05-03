@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { changeDivSkills } from "../../Redux/portfolioSlice"
+import { changeDivBoscoApp, changeDivPokeApi, changeDivSkills } from "../../Redux/portfolioSlice"
 import { useDispatch } from "react-redux";
 
 export const NavAbout = () => {
@@ -7,13 +7,15 @@ export const NavAbout = () => {
     const dispatch = useDispatch()
 
     const navigation = [
-        { name: 'Skills', href: '#sobreMi' },
-        { name: 'Features', href: '/features' },
-        { name: 'Marketplace', href: '/marketplace' },
+        { name: 'Skills' },
+        { name: 'BoscoApp' },
+        { name: 'PokeApi' },
     ];
 
     const changeButton = (name) => {
         if(name === 'Skills') dispatch(changeDivSkills(true))
+        if(name === 'BoscoApp') dispatch(changeDivBoscoApp(true))
+        if(name === 'PokeApi') dispatch(changeDivPokeApi(true))
     }
 
     return (
@@ -28,10 +30,10 @@ export const NavAbout = () => {
                         <Link
                             key={index}
                             to={ruta.href}
-                            onClick={changeButton(ruta.name)}
+                            onClick={() => changeButton(ruta.name)}
                             className="py-4 px-14  text-white border border-white bg-[#1b1b1b] cursor-pointer shadow-custom
                             hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-hoverCustom transition-all hover:text-[#44f814] 
-                            focus:translate-x-[4px] focus:translate-y-[4px] focus:bg-[#acfdb0] focus:border-white focus:border-3 focus:text-[#1b1b1b] focus:shadow-hoverCustom rounded-[20px]"
+                            focus:translate-x-[4px] focus:translate-y-[4px] focus:bg-black focus:text-[#44f814] focus:shadow-hoverCustom rounded-[20px]"
                         >
                             {ruta.name}
                         </Link>

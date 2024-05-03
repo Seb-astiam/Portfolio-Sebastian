@@ -5,21 +5,21 @@ import { ArrowUpRightIcon } from '@heroicons/react/24/solid'
 import FondoHoverMarca from '../assets/FondoHoverMarca.png'
 import FondoNoHoverMarca from '../assets/FondoNoHoverMarca.png'
 
-// const PNav = styled.p`
-//     &:hover {
-//         color: ${({ hoverColor }) => hoverColor};
-//     }
-// `;
-
-
 const PNav = styled.p`
-    transition: all 0.3s ease-in-out;
     &:hover {
-        color: ${props => props.hoverColor}; /* Cambia al color deseado */
-        transform: scale(1.1); /* Aumenta el tamaño al 110% */
-        /* Agrega cualquier otra animación deseada */
+        color: ${({ hoverColor }) => hoverColor};
     }
 `;
+
+
+// const PNav = styled.p`
+//     transition: all 0.3s ease-in-out;
+//     &:hover {
+//         color: ${props => props.hoverColor}; /* Cambia al color deseado */
+//         transform: scale(1.1); /* Aumenta el tamaño al 110% */
+//         /* Agrega cualquier otra animación deseada */
+//     }
+// `;
 
 export const Nav = () => {
     const [hoverColor, setHoverColor] = useState('#000000');

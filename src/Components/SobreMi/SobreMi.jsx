@@ -9,10 +9,20 @@ import { DiHtml5 } from "react-icons/di";
 import { DiGit } from "react-icons/di";
 import { DiVisualstudio } from "react-icons/di";
 import { useSelector } from "react-redux";
+import LandingProyectoPokemon from "../../assets/LandingProyectoPokemon.png"
+import HomeProyectoPokemon from "../../assets/HomeProyectoPokemon.png"
+import DetailProyectoPokemon from "../../assets/DetailProyectoPokemon.png"
+
+import { CgChevronRight } from "react-icons/cg";
+import { CgChevronLeft } from "react-icons/cg";
+import { useEffect, useState } from "react";
+
 
 export const SobreMi = () => {
 
     const tecnologías = useSelector((state) => state.storage.skills)
+    const Bosco = useSelector((state) => state.storage.BoscoApp)
+    const Pokemon = useSelector((state) => state.storage.PokeApi)
 
     const iconosDev = [
         DiJsBadge,
@@ -37,6 +47,41 @@ export const SobreMi = () => {
         {id: 7, name: 'Git'},
         {id: 8, name: 'VisualStudio'}
     ]
+
+    const imagenesProyectoPokemon = [
+        {img: LandingProyectoPokemon, name: "LandingPage", descripción: "Vista inicial de la aplicación, Ambientado a el diseño de los juegos"},
+        {img: HomeProyectoPokemon, name: "HomePage", descripción: "En la pagina principal encontraremos la vista de todos los pokemones que provienen de la api y los que se vayan creando"},
+        {img: DetailProyectoPokemon, name: 'DetailPage', descripción: "Detalle de cada pokemon con posibilidad de cambiar entre cada uno de los pokemones sin salir de la pagina"}
+
+    ]
+
+    const [numberPage, setNumberPage] = useState(1);
+
+    useEffect( ()=> {
+       setNumberPage(1)
+   }, [imagenesProyectoPokemon.length])
+
+    const NumVistasPage = 1;
+    const lastIndex = numberPage * NumVistasPage;
+    const firstIndex = lastIndex - NumVistasPage;
+    const vistaIndividual = imagenesProyectoPokemon.slice(firstIndex, lastIndex);
+    const totalPages = Math.ceil(imagenesProyectoPokemon.length / NumVistasPage);
+
+    const nextPage = () => {
+        if (lastIndex < imagenesProyectoPokemon.length) {
+            setNumberPage(numberPage + 1);
+        } else {
+            setNumberPage(1); 
+        }
+     }
+ 
+     const prevPage = () => {
+        if (firstIndex > 0) {
+            setNumberPage(numberPage - 1);
+        } else {
+            setNumberPage(totalPages); 
+        }
+     }
 
     return (
         <div id="sobreMi" className="h-screen flex justify-center bg-[#1b1b1b] border-t-4 border-[#1b1b1b]">
@@ -63,8 +108,8 @@ export const SobreMi = () => {
                         </div>
                     </div>
 
-                    {tecnologías && <div className="w-[50%] h-full content-center justify-center flex-wrap text-xl">
-                        <div className="flex flex-col h-full w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
+                    <div className="w-[50%] h-full content-center justify-center flex-wrap text-xl">
+                        { tecnologías && <div className="flex flex-col h-full w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
                             <h1 className="font-bold text-white"> Desarrollador web Full Stack</h1>
 
                             <div className="flex flex-wrap gap-10 items-center justify-center w-[500px] ">
@@ -80,9 +125,35 @@ export const SobreMi = () => {
                                 }
 
                             </div>
+                        </div>}
 
+                        { Bosco && <div className="flex flex-col h-full w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
+                            {vistaIndividual.map((imagen) => {
+                                return <div className="flex flex-col items-center font-monserrat ">
+                                    <div className="flex justify-center items-center ">
+                                        <button 
+                                            onClick={prevPage} 
+                                            disabled={numberPage === 1} 
+                                            className={`cursor-pointer hover:text-[#44f814] transition ${numberPage === 1 ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
+                                                <CgChevronLeft className="h-[50px] w-[50px]" />
+                                        </button>
+                                        <img src={imagen.img} className="h-[300px] w-[600px] "/>
+                                        <button 
+                                            onClick={nextPage} 
+                                            disabled={numberPage === totalPages} 
+                                            className={`cursor-pointer hover:text-[#44f814] transition ${numberPage === totalPages ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
+                                                <CgChevronRight className="h-[50px] w-[50px]"/>
+                                        </button>
+
+                                    </div>
+                                    <h1 className="font-extrabold">{imagen.name}</h1>
+                                    <p className="mt-8">
+                                        {imagen.descripción}
+                                    </p>
+                                </div>} )}
                         </div>
-                    </div>}
+                        }
+                    </div>
                 </div>
 
                 <div className="h-[20%]">
