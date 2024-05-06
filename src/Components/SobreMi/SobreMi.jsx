@@ -9,13 +9,26 @@ import { DiHtml5 } from "react-icons/di";
 import { DiGit } from "react-icons/di";
 import { DiVisualstudio } from "react-icons/di";
 import { useSelector } from "react-redux";
+
+// PROYECTO BOSCO
+import PrincipalBosco from "../../assets/PrincipalBosco.png"
+import LoginBosco from "../../assets/LoginBosco.png"
+import HomeBosco from "../../assets/HomeBosco.png"
+import DetailBosco from "../../assets/DetailBosco.png"
+import RegistroMascotaBosco from "../../assets/RegistroMascotaBosco.png"
+import RegistroAlojamientoBosco from "../../assets/RegistroAlojamientoBosco.png"
+import HistorialReservaBosco from "../../assets/HistorialReservaBosco.png"
+import RegistroUsuarioBosco from "../../assets/RegistroUsuarioBosco.png"
+
+
+// PROYECTO POKEMON
 import LandingProyectoPokemon from "../../assets/LandingProyectoPokemon.png"
 import HomeProyectoPokemon from "../../assets/HomeProyectoPokemon.png"
 import DetailProyectoPokemon from "../../assets/DetailProyectoPokemon.png"
 
 import { CgChevronRight } from "react-icons/cg";
 import { CgChevronLeft } from "react-icons/cg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 export const SobreMi = () => {
@@ -55,33 +68,70 @@ export const SobreMi = () => {
 
     ]
 
+    const imagenesProyectoBosco = [
+        {img: PrincipalBosco, name: "Pagina Principal", descripción: "Vista inicial de la aplicación, contiene botones de registro, de inicio de sesión, alojamientos mas relevantes y información de interes que brinda confianza a los nuevos usuarios."},
+        {img: LoginBosco, name: "Inicio de sesión", descripción: "Cuenta con inicio facil a traves de google o facebook asi como tambien de manera manual, en caso de no tener cuenta registrada cuenta con un link que redirecciona a la pagina de registro."},
+        {img: RegistroUsuarioBosco, name: 'Registro de usuario', descripción: "Pagina clave para poder registrarse dentro de la app, cuenta con registro rapido con google y facebook."},
+        {img: HomeBosco, name: 'Pagina de inicio', descripción: "Inicio de aplicación, muestra todos los alojamientos disponibles, cuenta con filtros para optimizar la busqueda del alojamiento."},
+        {img: DetailBosco, name: 'Detalle Alojamiento', descripción: "Pagina principal de cada alojamiento que contiene el formulario para hacer la reserva."},
+        {img: RegistroMascotaBosco, name: 'Registro Mascota', descripción: "Pagina registro de huesped."},
+        {img: RegistroAlojamientoBosco, name: 'Registro Alojamiento', descripción: "Pagina registro de los Alojamientos."},
+        {img: HistorialReservaBosco, name: 'Historial de reserva', descripción: "Aqui podras ver información de todas tus reservas."}
+    ]
+
     const [numberPage, setNumberPage] = useState(1);
 
-    useEffect( ()=> {
-       setNumberPage(1)
-   }, [imagenesProyectoPokemon.length])
+    const PaginadoPokemon = (arr) => {
+        const NumVistasPage = 1;
+        const lastIndex = numberPage * NumVistasPage;
+        const firstIndex = lastIndex - NumVistasPage;
+        const vistaIndividual = arr.slice(firstIndex, lastIndex);
+        const totalPages = Math.ceil(arr.length / NumVistasPage);
 
-    const NumVistasPage = 1;
-    const lastIndex = numberPage * NumVistasPage;
-    const firstIndex = lastIndex - NumVistasPage;
-    const vistaIndividual = imagenesProyectoPokemon.slice(firstIndex, lastIndex);
-    const totalPages = Math.ceil(imagenesProyectoPokemon.length / NumVistasPage);
+        const nextPage = () => {
+            if (lastIndex < arr.length) {
+                setNumberPage(numberPage + 1);
+            } else {
+                setNumberPage(1); 
+            }
+        }
+     
+         const prevPage = () => {
+            if (firstIndex > 0) {
+                setNumberPage(numberPage - 1);
+            } else {
+                setNumberPage(totalPages); 
+            }
+        }
 
-    const nextPage = () => {
-        if (lastIndex < imagenesProyectoPokemon.length) {
-            setNumberPage(numberPage + 1);
-        } else {
-            setNumberPage(1); 
-        }
-     }
- 
-     const prevPage = () => {
-        if (firstIndex > 0) {
-            setNumberPage(numberPage - 1);
-        } else {
-            setNumberPage(totalPages); 
-        }
-     }
+        return (<div className="flex flex-coldivfull h-[700px] w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
+                {vistaIndividual.map((imagen) => {
+                    return <div className="flex flex-col items-center font-monserrat ">
+                        <div className="flex justify-center items-center ">
+                            <button 
+                                onClick={prevPage} 
+                                disabled={numberPage === 1} 
+                                className={`cursor-pointer text-white hover:text-[#44f814] transition ${numberPage === 1 ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
+                                    <CgChevronLeft className="h-[50px] w-[50px]" />
+                            </button>
+                            <img src={imagen.img} className="h-[400px] w-[600px] rounded-[20px]"/>
+                            <button 
+                                onClick={nextPage} 
+                                disabled={numberPage === totalPages} 
+                                className={`cursor-pointer text-white hover:text-[#44f814] transition ${numberPage === totalPages ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
+                                    <CgChevronRight className="h-[50px] w-[50px]"/>
+                            </button>
+
+                        </div>
+                        <h1 className="font-extrabold text-white">{imagen.name}</h1>
+                        <p className="mt-8 text-white text-center">
+                            {imagen.descripción}
+                        </p>
+                    </div>} )}
+            </div>)
+    }
+
+
 
     return (
         <div id="sobreMi" className="h-screen flex justify-center bg-[#1b1b1b] border-t-4 border-[#1b1b1b]">
@@ -127,32 +177,9 @@ export const SobreMi = () => {
                             </div>
                         </div>}
 
-                        { Bosco && <div className="flex flex-col h-full w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
-                            {vistaIndividual.map((imagen) => {
-                                return <div className="flex flex-col items-center font-monserrat ">
-                                    <div className="flex justify-center items-center ">
-                                        <button 
-                                            onClick={prevPage} 
-                                            disabled={numberPage === 1} 
-                                            className={`cursor-pointer hover:text-[#44f814] transition ${numberPage === 1 ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
-                                                <CgChevronLeft className="h-[50px] w-[50px]" />
-                                        </button>
-                                        <img src={imagen.img} className="h-[300px] w-[600px] "/>
-                                        <button 
-                                            onClick={nextPage} 
-                                            disabled={numberPage === totalPages} 
-                                            className={`cursor-pointer hover:text-[#44f814] transition ${numberPage === totalPages ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
-                                                <CgChevronRight className="h-[50px] w-[50px]"/>
-                                        </button>
+                        { Bosco && PaginadoPokemon(imagenesProyectoBosco) }
 
-                                    </div>
-                                    <h1 className="font-extrabold">{imagen.name}</h1>
-                                    <p className="mt-8">
-                                        {imagen.descripción}
-                                    </p>
-                                </div>} )}
-                        </div>
-                        }
+                        { Pokemon && PaginadoPokemon(imagenesProyectoPokemon) }
                     </div>
                 </div>
 

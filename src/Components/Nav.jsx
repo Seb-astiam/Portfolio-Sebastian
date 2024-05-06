@@ -46,9 +46,9 @@ export const Nav = () => {
     return (
         <div id="Nav" className="h-[100vh] flex flex-col items-center justify-start  bg-[#1b1b1b] gap-20">
             <div className="flex w-full justify-evenly font-montserrat font-bold h-[150px] fixed z-10 bg-[#1b1b1b] items-center shadow-lg">
-            <div class="relative w-[80px] h-[80px] right-[-150px]">
-                <img class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100 hover:opacity-0 cursor-pointer" src={FondoNoHoverMarca} alt="Foto principal" />
-                <a href="#Nav"><img class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-100 cursor-pointer" src={FondoHoverMarca} alt="Foto principal" /></a>
+            <div className="relative w-[80px] h-[80px] right-[-150px]">
+                <img className="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100 hover:opacity-0 cursor-pointer" src={FondoNoHoverMarca} alt="Foto principal" />
+                <a href="#Nav"><img className="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-100 cursor-pointer" src={FondoHoverMarca} alt="Foto principal" /></a>
             </div>
 
                 <h1 className="py-4 px-14 font-montserrat font-semibold text-white text-2xl">Joan Agudelo</h1>
