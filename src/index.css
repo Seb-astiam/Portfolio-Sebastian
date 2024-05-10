@@ -5,3 +5,15 @@
 html {
     scroll-behavior: smooth;
 }
+
+@keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: auto;
+    }
+  }
+  .animate-typewriter {
+    animation: typewriter 4s steps(40) 1s 1 normal both;
+  }
