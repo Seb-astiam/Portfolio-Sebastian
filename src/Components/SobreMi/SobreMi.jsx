@@ -104,34 +104,32 @@ export const SobreMi = () => {
             }
         }
 
-        return (<div className="flex flex-coldivfull h-[700px] w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
+        return (<div className="flex flex-col h-[420px] w-[90%] justify-evenly items-center bg-black rounded-[50px]">
                 {vistaIndividual.map((imagen) => {
-                    return <div className="flex flex-col items-center font-monserrat ">
+                    return <div className="flex flex-col items-center font-monserrat p-4">
                         <div className="flex justify-center items-center ">
                             <button 
                                 onClick={prevPage} 
                                 disabled={numberPage === 1} 
                                 className={`cursor-pointer text-white hover:text-[#44f814] transition ${numberPage === 1 ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
-                                    <CgChevronLeft className="h-[50px] w-[50px]" />
+                                    <CgChevronLeft className="h-[30px] w-[30px]" />
                             </button>
-                            <img src={imagen.img} className="h-[400px] w-[600px] rounded-[20px]"/>
+                            <img src={imagen.img} className="h-[250px] w-[370px] rounded-[20px]"/>
                             <button 
                                 onClick={nextPage} 
                                 disabled={numberPage === totalPages} 
                                 className={`cursor-pointer text-white hover:text-[#44f814] transition ${numberPage === totalPages ? "text-gray-500 disabled-color hover:text-gray-500" : ""}`}>
-                                    <CgChevronRight className="h-[50px] w-[50px]"/>
+                                    <CgChevronRight className="h-[30px] w-[30px]"/>
                             </button>
 
                         </div>
                         <h1 className="font-extrabold text-white">{imagen.name}</h1>
-                        <p className="mt-8 text-white text-center">
+                        <p className="mt-4 text-white text-center h-14">
                             {imagen.descripción}
                         </p>
                     </div>} )}
             </div>)
     }
-
-
 
     return (
         <div id="sobreMi" className="h-screen flex justify-center bg-[#1b1b1b] border-t-4 border-[#1b1b1b]">
@@ -141,9 +139,9 @@ export const SobreMi = () => {
                
                 <div className="flex justify-center items-start w-full h-[80%] rounded-b-[45px] font-montserrat font-normal">
                     
-                    <div className="w-[50%] h-full content-center justify-center flex-wrap text-start p-[100px] flex flex-col gap-[50px] text-xl ">
-                        <div className="border-8 border-black p-20 flex flex-col gap-3 rounded-[50px] bg-white border-double ">
-                            <h1 className="text-4xl font-bold">Sobre Mi</h1>
+                    <div className="w-[50%] h-full content-center justify-center flex-wrap p-[50px]">
+                        <div className='flex flex-col gap-2 bg-white p-8 text-sm rounded-[50px] text-start h-[420px]'>
+                            <h1 className="text-2xl font-bold">Sobre Mi</h1>
                             <p className="w-[90%]"> 
                                 Hola, me llamo <strong>Joan Sebastian Agudelo</strong> Soy programador Full-Stack con formación en Química y Farmacia, 
                                 tengo experiencia practica en diversos proyectos utilizando Javascript, Socket.io, postgreSQL entre otras tecnologías, 
@@ -158,18 +156,18 @@ export const SobreMi = () => {
                         </div>
                     </div>
 
-                    <div className="w-[50%] h-full content-center justify-center flex-wrap text-xl">
-                        { tecnologías && <div className="flex flex-col h-full w-[90%] justify-evenly gap-10 items-center font-montserrat bg-black m-6 rounded-[50px]">
-                            <h1 className="font-bold text-white"> Desarrollador web Full Stack</h1>
+                    <div className="w-[50%] h-full content-center justify-center flex-wrap ">
+                        { tecnologías && <div className="flex flex-col h-[420px] w-[90%] justify-evenly gap-5 items-center font-montserrat bg-black m-3 rounded-[50px]">
+                            <h1 className="font-bold text-white text-xl"> Desarrollador web Full Stack</h1>
 
-                            <div className="flex flex-wrap gap-10 items-center justify-center w-[500px] ">
+                            <div className="flex flex-wrap gap-5 items-center justify-center w-[500px] ">
                                 {
                                     iconosDev.map((Icono, index) => {
                                         const iconoInfo = nombreIconos.find((def) => def.id === index);
                                         const nombre = iconoInfo ? iconoInfo.name : '';
                                         return <div className="flex flex-col" key={index}>
                                             <p className="text-white z-10">{nombre}</p>
-                                            <Icono className="h-[75px] w-[75px] hover:scale-125 transition-all text-white"/>
+                                            <Icono className="h-[60px] w-[60px] hover:scale-125 transition-all text-white"/>
                                         </div> 
                                     })
                                 }

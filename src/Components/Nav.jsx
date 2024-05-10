@@ -30,7 +30,7 @@ export const Nav = () => {
 
     const navigation = [
         { name: 'Sobre Mi', href: '#sobreMi' },
-        { name: 'Features', href: '/features' },
+        { name: 'Contactame', href: '#Contactame' },
         { name: 'Marketplace', href: '/marketplace' },
         { name: 'Company', href: '/company' },
     ];
@@ -45,13 +45,13 @@ export const Nav = () => {
 
     return (
         <div id="Nav" className="h-[100vh] flex flex-col items-center justify-start  bg-[#1b1b1b] gap-20">
-            <div className="flex w-full justify-evenly font-montserrat font-bold h-[150px] fixed z-10 bg-[#1b1b1b] items-center shadow-lg">
-            <div className="relative w-[80px] h-[80px] right-[-150px]">
+            <div className="flex w-full justify-evenly font-montserrat font-bold h-[110px] fixed z-10 bg-[#1b1b1b] items-center shadow-lg">
+            <div className="relative w-[70px] h-[70px] right-[-80px]">
                 <img className="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100 hover:opacity-0 cursor-pointer" src={FondoNoHoverMarca} alt="Foto principal" />
                 <a href="#Nav"><img className="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-100 cursor-pointer" src={FondoHoverMarca} alt="Foto principal" /></a>
             </div>
 
-                <h1 className="py-4 px-14 font-montserrat font-semibold text-white text-2xl">Joan Agudelo</h1>
+                <h1 className="py-2 px-14 font-montserrat font-semibold text-white text-2xl">Joan Agudelo</h1>
                 {navigation.map((ruta, index) => {
                     return (       
                         <a
@@ -69,12 +69,12 @@ export const Nav = () => {
 
 
             <div 
-                className="bg-[#acfdb0] w-[85%] h-[600px] absolute bottom-0 rounded-t-[45px] flex justify-evenly items-center"
+                className="bg-[#acfdb0] w-[85%] h-[500px] absolute bottom-0 rounded-t-[45px] flex justify-evenly items-center"
             >   
                 <div>
-                    <img className="w-[600px] h-[600px] rounded-[50%] bg-slate-700 top-[-50px] translate-y-[-240px] translate-x-[-30px] mb-[-150px]" src={FotoGrandePrincipal} alt="Foto principal"></img>
+                    <img className="w-[400px] h-[400px] rounded-[50%] bg-slate-700 top-[-50px] translate-y-[-240px] translate-x-[-30px] mb-[-150px]" src={FotoGrandePrincipal} alt="Foto principal"></img>
                     <div className="flex gap-2">
-                        <ArrowUpRightIcon className="w-[60px] h-[65px]"/>
+                        <ArrowUpRightIcon className="w-[50px] h-[60px]"/>
                         <div className="flex-col text-2xl">
                             <h1 className="font-monserrat font-bold">Full Stack</h1>
                             <h1 className="font-monserrat font-bold">Developer</h1>
@@ -82,7 +82,7 @@ export const Nav = () => {
                     </div>
                 </div>
                 <div className="h-full flex flex-col justify-center gap-4">
-                    <div className="font-montserrat font-bold text-7xl mb-[130px] mt-5 w-full flex flex-wrap items-center justify-center">
+                    <div className="font-montserrat font-bold text-5xl mb-[130px] mt-3 w-full flex flex-wrap items-center justify-center">
                         {bienvenido.map((letra, index) => (
                             letra === " " ? (
                                 <p key={index}>&nbsp;</p>
