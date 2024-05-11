@@ -140,7 +140,7 @@ export const SobreMi = () => {
                 <div className="flex justify-center items-start w-full h-[80%] rounded-b-[45px] font-montserrat font-normal">
                     
                     <div className="w-[50%] h-full content-center justify-center flex-wrap p-[50px]">
-                        <div className='flex flex-col gap-2 bg-white p-8 text-sm rounded-[50px] text-start h-[420px]'>
+                        <div className='flex flex-col gap-2 bg-white p-8 text-sm rounded-[50px] text-start h-[420px] border-black border-8 border-double'>
                             <h1 className="text-2xl font-bold">Sobre Mi</h1>
                             <p className="w-[90%]"> 
                                 Hola, me llamo <strong>Joan Sebastian Agudelo</strong> Soy programador Full-Stack con formación en Química y Farmacia, 
