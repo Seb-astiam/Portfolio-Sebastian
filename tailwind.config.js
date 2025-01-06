@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import animations from '@midudev/tailwind-animations'
 export default {
   content: [
     "./index.html",
@@ -6,6 +7,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        'gradient-start': '#00BF63',
+        'gradient-end': '#8C52FF'
+      },
       boxShadow: {
         'custom': '4px 4px 0px  rgba(100, 100, 100)',
         'hoverCustom': '0 0 0 rgba(100, 100, 100)'
@@ -25,7 +30,19 @@ export default {
     },
     
   },
-  plugins: [],
+  plugins: [
+    function ({addUtilities}) {
+      const newUtilities = {
+        '.border-gradient': {
+          'border-width': '2px',
+          'border-image-slice': 1,
+          'border-image-source': 'linear-gradient(90deg, #00BF63, #8C52FF )'
+        }
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
+    animations
+  ],
   
 }
 
